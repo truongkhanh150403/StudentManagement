@@ -1,35 +1,20 @@
 package com.university.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Student {
-    private int id;
+    private String id;
     private String name;
     private int age;
 
-    public Student(){
-        this.id = 0;
-        this.name = "";
-        this.age = 0;
-    }
-
-    public Student(int id, String name, int age){
+    public Student(String id, String name, int age) {
         this.id = id;
         this.name = name;
         this.age = age;
-    }
-
-    public void setAge(int age){
-        this.age = age;
-    }
-
-    public int getId(){
-        return this.id;
-    }
-
-    public String getName(){
-        return this.name;
-    }
-
-    public int getAge(){
-        return this.age;
     }
 }
