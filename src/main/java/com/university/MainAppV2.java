@@ -1,6 +1,12 @@
 package com.university;
 
 import java.sql.*;
+/*
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+*/
 
 public class MainAppV2 {
     private static final String URL = "jdbc:mysql://localhost:3306/student-management";
@@ -13,6 +19,7 @@ public class MainAppV2 {
         System.out.println("====== DANH SÁCH SINH VIÊN TỪ DATABASE ======");
 
         // Mở kết nối và tạo bộ thực thi câu lệnh
+        //try-with-resources sẽ tự động đóng kết nối statement và resultSet sau khi xong việc
         try(Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sqlQuery)) {

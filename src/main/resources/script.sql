@@ -18,4 +18,4 @@ SELECT * FROM student WHERE age>=18;
 UPDATE student SET name = 'Tran Thi Binh' WHERE id = 'S02';
 
 -- 5. [Em hãy tự gõ] Viết câu lệnh DELETE xóa sinh viên 'S03' ra khỏi hệ thống
-DELETE * FROM student WhERE id = 'S03';
+DELETE FROM student WhERE id = 'S03';
