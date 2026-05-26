@@ -37,7 +37,7 @@
                  <configuration>
                      <archive>
                          <manifest>
-                             <mainClass>MainApp</mainClass>
+                             <mainClass></mainClass>
                          </manifest>
                      </archive>
                  </configuration>
