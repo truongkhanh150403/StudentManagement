@@ -55,4 +55,43 @@ public class StudentDAO {
             return false;   // Trả về false nếu có lỗi xảy ra khi thêm sinh viên
         }
     }
+
+    // HÀM 3: CẬP NHẬT THÔNG TIN SINH VIÊN (UPDATE)
+    public boolean updateStudent(Student student) {
+        // Câu lệnh SQL để cập nhật thông tin sinh viên trong bảng student, sử dụng dấu chấm hỏi (?) làm tham số
+        String sql = "UPDATE student SET name = ?, age = ? WHERE id = ?";
+
+        try(Connection connection = DatabaseConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+            // Bắn dữ liệu mới vào các dấu hỏi ?
+            preparedStatement.setString(1, student.getName());
+            preparedStatement.setInt(2, student.getAge());
+            preparedStatement.setString(3, student.getId()); //WHERE id = ?
+
+            int rowsUpdated = preparedStatement.executeUpdate();
+            return  rowsUpdated > 0;    //// Trả về true nếu sửa thành công ít nhất 1 dòng
+
+        }catch (Exception e) {
+            System.out.println("❌ Lỗi khi cập nhật sinh viên: " + e.getMessage());
+            return  false;
+        }
+    }
+
+    // HÀM 4: XÓA SINH VIÊN THEO MÃ ID (DELETE)
+    public boolean deleteStudent(String studentId) {
+        String sql = "DELETE FROM student WHERE id = ?";
+
+        try(Connection connection = DatabaseConnection.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+            preparedStatement.setString(1, studentId); //WHERE id = ?
+
+            int rowsDeleted = preparedStatement.executeUpdate();
+            return rowsDeleted > 0;    // Trả về true nếu xóa thành công
+        }catch(Exception e) {
+            System.out.println("❌ Lỗi khi xóa sinh viên: " +e.getMessage());
+            return false;
+        }
+    }
 }
